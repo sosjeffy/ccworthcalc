@@ -14,10 +14,25 @@ class CreditCard:
     def af(self):
         return self.af
 
+    def calc_be(self) -> float:
+        '''Calculates break even spend on credit card'''
+        spent = 0
+        earned_per_dollar = 1 * (self.rr / 100)
+        cost_to_go = self.af * -1
+
+        while cost_to_go < 0:
+            spent += earned_per_dollar
+            cost_to_go += earned_per_dollar
+
+        return spent
+
     def __repr__(self):
         return f'CreditCard({self.name}, {self.rr}, {self.af})'
 
     def __str__(self):
-        return f'{self.name} earns {self.rr}% with an annual fee of {self.af}'
+        return f'{self.name} earns {self.rr}% with an annual fee of ${self.af}'
 
 
+assert str(CreditCard('SPG Biz', 3, 95)) == 'SPG Biz earns 3% with an annual fee of $95'
+
+assert repr(CreditCard('', 10, 99483)) == "CreditCard(, 10, 99483)"
