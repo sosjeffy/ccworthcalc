@@ -12,18 +12,24 @@ def collect_rr() -> float:
     while True:
         try:
             rr = float(input('How much does your card earn (in percent)?: '))
+            print()
             break
         except ValueError:
             print('Sorry, that is not a valid rewards rate! Try again.')
-            rr = float(input('How much does your card earn (in percent)?: '))
+            print()
+            rr = collect_rr()
+            print()
     return rr
 
 def collect_af() -> float:
     while True:
         try:
             af = float(input('How much is the annual fee on your card?: '))
+            print()
             break
         except ValueError:
             print('Sorry, that is not a valid annual fee! Try again.')
-            af = float(input('How much is the annual fee on your card?: '))
+            print()
+            af = collect_af()
+            print()
     return af
