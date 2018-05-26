@@ -5,15 +5,6 @@ class CreditCard:
         self.rr = reward_rate
         self.af = annual_fee
 
-    def name(self):
-        return self.name
-
-    def rr(self):
-        return self.rr
-
-    def af(self):
-        return self.af
-
     def calc(self) -> float:
         '''Calculates break even spend on credit card'''
         spent = 0
