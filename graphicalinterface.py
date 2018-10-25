@@ -8,28 +8,37 @@ def intro():
     print('offset the annual fee of a card.')
     print('*************************************************')
 
+
 def collect_rr() -> float:
-    while True:
+    rr = None
+    while rr is None:  # This will loop until user inputs valid percentage
         try:
-            rr = float(input('How much does your card earn (in percent)?: '))
+            user_rr = float(input('How much does your card earn (in percent; must be greater than 0)?: '))
+
+            if user_rr > 0:
+                rr = user_rr
+            else:
+                print('Sorry, that is not a valid rewards rate! Try again.')
+
             print()
-            break
         except ValueError:
             print('Sorry, that is not a valid rewards rate! Try again.')
-            print()
-            rr = collect_rr()
-            print()
     return rr
 
+
 def collect_af() -> float:
-    while True:
+    af = None
+    while af is None:  # This will loop until user inputs a correct af
         try:
-            af = float(input('How much is the annual fee on your card?: '))
+            user_af = float(input('How much is the annual fee on your card?: '))
+
+            if user_af >= 0:  # This if/else statement is to ensure that user inputted af is positive
+                af = user_af
+            else:
+                print('Sorry, that is not a valid annual fee! Try again.')
+
             print()
-            break
-        except ValueError:
+
+        except ValueError:  # This occurs bc user inputted invalid, non-numerical af
             print('Sorry, that is not a valid annual fee! Try again.')
-            print()
-            af = collect_af()
-            print()
     return af
